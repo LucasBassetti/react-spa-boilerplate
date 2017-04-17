@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
-import menu from '../menu';
+import menu from '../../../menu';
 
 const $ = require('jquery');
 require('./Sidebar.css');
@@ -20,8 +21,8 @@ class Sidebar extends Component {
   componentDidMount() {
     const self = this;
     const link = window.location.hash.replace('#', '');
-    $(`.sub-links a[href="${link}`).parents('div').addClass('selected');
-    $(`.sub-links a[href="${link}`).addClass('selected-link');
+    $(`.sub-links a[data-href="${link}`).parents('div').addClass('selected');
+    $(`.sub-links a[data-href="${link}`).addClass('selected-link');
 
     const linkDivs = $('.sidebar-links > div');
     const links = $('.sidebar-links a');
@@ -56,7 +57,12 @@ class Sidebar extends Component {
   renderLink(link) {
     return (
       <li key={link.href}>
-        <a href={link.href}>{link.title}</a>
+        <a
+          data-href={link.href}
+          onClick={() => this.props.handleLink(link.href)}
+        >
+          {link.title}
+        </a>
       </li>
     );
   }
@@ -86,7 +92,12 @@ class Sidebar extends Component {
         />
         <div className={`sidebar ${opened ? 'opened' : ''}`}>
           <div className="sidebar-header">
-            <a href="/" className="logo">React SPA Boilerplate</a>
+            <a
+              onClick={() => this.props.handleLink(menu.homeLink)}
+              className="logo"
+            >
+              {menu.title}
+            </a>
             <i
               className="sidebar-close-button fa fa-close"
               onClick={() => this.toggleSidebar()}
@@ -94,12 +105,16 @@ class Sidebar extends Component {
           </div>
 
           <div className="sidebar-links">
-            {_.map(menu, this.renderSection)}
+            {_.map(menu.sections, this.renderSection)}
           </div>
         </div>
       </div>
     );
   }
 }
+
+Sidebar.propTypes = {
+  handleLink: PropTypes.func.isRequired,
+};
 
 export default Sidebar;

@@ -27,7 +27,7 @@ module.exports = {
     ]),
   ],
   debug: true,
-  devtool: 'source-map',
+  devtool: '#eval-source-map',
   module: {
     loaders: [
       {

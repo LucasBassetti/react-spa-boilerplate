@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5 {
 a {
   text-decoration: none;
   color: #944eb8;
+  cursor: pointer;
 }
 
 a:hover {

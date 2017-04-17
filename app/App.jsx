@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Home from './components/home/Home';
 import Docs from './components/docs/Docs';
 
-const $ = require('jquery');
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,26 +10,15 @@ class App extends Component {
       link: '/',
     };
 
-    this.goToLink = this.goToLink.bind(this);
+    this.handleLink = this.handleLink.bind(this);
   }
 
-  componentDidMount() {
-    const self = this;
-    $('body').on('click', 'a:not(.external-link)', handleLink);
-    self.setState({ link: window.location.hash.replace('#', '') });
-
-    function handleLink(event) {
-      event.preventDefault();
-      const link = $(this).attr('href');
-
-      if (link !== '#') {
-        window.location.hash = link;
-        self.setState({ link });
-      }
-    }
+  componentWillMount() {
+    this.setState({ link: window.location.hash.replace('#', '') });
   }
 
-  goToLink(link) {
+  handleLink(link) {
+    window.location.hash = link;
     this.setState({ link });
   }
 
@@ -42,12 +29,12 @@ class App extends Component {
     return isHome ? (
       <Home
         link={link}
-        goToLink={this.goToLink}
+        handleLink={this.handleLink}
       />
     ) : (
       <Docs
         link={link}
-        goToLink={this.goToLink}
+        handleLink={this.handleLink}
       />
     );
   }

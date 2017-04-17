@@ -1,19 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import menu from '../../menu';
 
 require('./Home.css');
 
-const home = {
-  title: 'REACT SPA Boilerplate',
-  description: 'A React SPA boilerplate for open source projects',
-  docsLink: '/docs/installation',
-  github: {
-    user: 'lucasbassetti',
-    repository: 'react-spa-boilerplate',
-  },
-};
-
-const Home = () => {
-  const { title, description, docsLink, github } = home;
+const Home = (props) => {
+  const { title, description, docsLink, github } = menu;
   return (
     <div className="home">
       <h1 className="title">{title}</h1>
@@ -24,7 +16,7 @@ const Home = () => {
             className="github-button"
             href={`https://github.com/${github.user}/${github.repository}`}
             data-style="mega"
-            data-count-href={`${github.user}/${github.repository}/stargazers`}
+            data-count-href={`/${github.user}/${github.repository}/stargazers`}
             data-count-api={`/repos/${github.user}/${github.repository}#stargazers_count`}
             data-count-aria-label="# stargazers on GitHub"
             aria-label={`Star ${github.user}/${github.repository} on GitHub`}
@@ -37,7 +29,7 @@ const Home = () => {
             className="github-button"
             href={`https://github.com/${github.user}/${github.repository}/fork`}
             data-style="mega"
-            data-count-href={`${github.user}/${github.repository}/network`}
+            data-count-href={`/${github.user}/${github.repository}/network`}
             data-count-api={`/repos/${github.user}/${github.repository}#forks_count`}
             data-count-aria-label="# forks on GitHub"
             aria-label={`Fork ${github.user}/${github.repository} on GitHub`}
@@ -49,7 +41,7 @@ const Home = () => {
       <p className="documentation">
         <a
           className="docs-button"
-          href={docsLink}
+          onClick={() => props.handleLink(docsLink)}
         >
           <i className="fa fa-book" />
           Documentation
@@ -57,6 +49,10 @@ const Home = () => {
       </p>
     </div>
   );
+};
+
+Home.propTypes = {
+  handleLink: PropTypes.func.isRequired,
 };
 
 export default Home;
