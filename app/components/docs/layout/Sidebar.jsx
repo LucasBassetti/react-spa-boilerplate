@@ -21,8 +21,8 @@ class Sidebar extends Component {
   componentDidMount() {
     const self = this;
     const link = window.location.hash.replace('#', '');
-    $(`.sub-links a[data-href="${link}`).parents('div').addClass('selected');
-    $(`.sub-links a[data-href="${link}`).addClass('selected-link');
+    $(`.sub-links a[data-href="${link}"]`).parents('div').addClass('selected');
+    $(`.sub-links a[data-href="${link}"]`).addClass('selected-link');
 
     const linkDivs = $('.sidebar-links > div');
     const links = $('.sidebar-links a');

@@ -6,23 +6,23 @@ module.exports = {
   entry: path.resolve(__dirname, 'app/index'),
   devServer: {
     historyApiFallback: true,
-    outputPath: path.join(__dirname, 'build'),
+    outputPath: path.join(__dirname, 'docs'),
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, 'build/js'),
+    path: path.resolve(__dirname, 'docs/js'),
     publicPath: '/js/',
     filename: 'bundle.js',
   },
   plugins: [
-    new CleanWebpackPlugin(['build']),
+    new CleanWebpackPlugin(['docs']),
     new CopyWebpackPlugin([
       {
         context: path.resolve(__dirname, 'app/static'),
         from: '**/*',
-        to: path.resolve(__dirname, 'build'),
+        to: path.resolve(__dirname, 'docs'),
       },
     ]),
   ],
