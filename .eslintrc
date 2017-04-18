@@ -6,6 +6,7 @@
     "document": true,
     "window": true,
     "location": true,
+    "hljs": true,
   },
   "rules": {
     "react/react-in-jsx-scope": ["off"],

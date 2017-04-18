@@ -11,7 +11,7 @@ const Installation = () => (
   <div className="docs-installation">
     <p>Run the following commands in your terminal</p>
     <pre>
-      <code>
+      <code className="bash">
         { installationCode }
       </code>
     </pre>

@@ -5,6 +5,7 @@
 .sidebar-toggle {
   background: #fff;
   cursor: pointer;
+  display: none;
   font-size: 24px;
   padding: 16px;
 }
@@ -46,11 +47,9 @@
 	padding: 10px 0 10px 5px;
 	text-align: left;
 	color:  #4a4a4a;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	line-height: 2;
-	border-left-width: 2px;
-	border-left-style: solid;
 }
 
 .sidebar-links div.selected > a {
@@ -74,7 +73,7 @@
 	list-style: none;
 	padding: 0 0 0 30px;
 	color:  #4a4a4a;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: bold;
 	line-height: 24px;
 	margin: 0;
@@ -134,6 +133,10 @@
 @media screen and (max-width: 765px) {
   .sidebar-container {
     height: 56px;
+  }
+
+  .sidebar-toggle {
+    display: inline-block;
   }
 
   .sidebar {

@@ -1,28 +1,30 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: path.resolve(__dirname, 'app/index'),
   devServer: {
     historyApiFallback: true,
-    outputPath: path.join(__dirname, 'docs'),
+    outputPath: path.join(__dirname, 'build'),
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, 'docs/js'),
+    path: path.resolve(__dirname, 'build/js'),
     publicPath: '/js/',
     filename: 'bundle.js',
   },
   plugins: [
-    new CleanWebpackPlugin(['docs']),
+    new CleanWebpackPlugin(['build']),
     new CopyWebpackPlugin([
       {
         context: path.resolve(__dirname, 'app/static'),
         from: '**/*',
-        to: path.resolve(__dirname, 'docs'),
+        to: path.resolve(__dirname, 'build'),
       },
     ]),
   ],
@@ -37,8 +39,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        loader: 'style-loader!css-loader!postcss-loader',
       },
     ],
   },
+  postcss: () => [
+    precss,
+    autoprefixer,
+  ],
 };
