@@ -53,10 +53,20 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+pre {
+  white-space: pre-wrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  border-radius: 5px;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
 code {
   white-space: pre-wrap;
 	word-wrap: break-word;
-  border-radius: 5px;
   padding: 12px !important;
   line-height: 22px
 }
