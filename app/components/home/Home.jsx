@@ -6,37 +6,26 @@ require('./Home.css');
 
 const Home = (props) => {
   const { title, description, docsLink, github } = menu;
+  const githubUrl = `https://ghbtns.com/github-btn.html?user=${github.user}&repo=${github.repository}`;
   return (
     <div className="home">
       <h1 className="title">{title}</h1>
       <p className="description">{description}</p>
       <div className="buttons">
-        <div className="button">
-          <a
-            className="github-button"
-            href={`https://github.com/${github.user}/${github.repository}`}
-            data-style="mega"
-            data-count-href={`/${github.user}/${github.repository}/stargazers`}
-            data-count-api={`/repos/${github.user}/${github.repository}#stargazers_count`}
-            data-count-aria-label="# stargazers on GitHub"
-            aria-label={`Star ${github.user}/${github.repository} on GitHub`}
-          >
-            Star
-          </a>
-        </div>
-        <div className="button">
-          <a
-            className="github-button"
-            href={`https://github.com/${github.user}/${github.repository}/fork`}
-            data-style="mega"
-            data-count-href={`/${github.user}/${github.repository}/network`}
-            data-count-api={`/repos/${github.user}/${github.repository}#forks_count`}
-            data-count-aria-label="# forks on GitHub"
-            aria-label={`Fork ${github.user}/${github.repository} on GitHub`}
-          >
-            Fork
-          </a>
-        </div>
+        <iframe
+          src={`${githubUrl}&type=star&count=true&size=large`}
+          frameBorder="0"
+          scrolling="0"
+          width="160px"
+          height="30px"
+        />
+        <iframe
+          src={`${githubUrl}&type=fork&count=true&size=large`}
+          frameBorder="0"
+          scrolling="0"
+          width="158px"
+          height="30px"
+        />
       </div>
       <p className="documentation">
         <a

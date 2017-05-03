@@ -26,11 +26,6 @@
   margin: 24px 0;
 }
 
-.home .button {
-  display: inline-block;
-  padding: 6px;
-}
-
 .home .docs-button {
   border: 2px solid #fff;
   border-radius: 30px;
