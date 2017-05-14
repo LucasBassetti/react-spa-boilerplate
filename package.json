@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:watch": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test",
-    "build": "webpack"
+    "build": "webpack --config webpack.config.prod.js"
   },
   "nyc": {
     "reporter": [
